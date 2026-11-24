@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="Clerestoria builds developer tools for understanding complex codebases. Explore Cartopath, our visual codebase explorer.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Clerestoria">
+    <meta property="og:title" content="Clerestoria · Developer tools">
+    <meta property="og:description" content="Tools for understanding complex codebases. Explore Cartopath, our visual codebase explorer.">
+    <title>Clerestoria · Developer tools</title>
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark" href="#top">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          Clerestoria
+        </a>
+        <nav aria-label="Main">
+          <a class="nav-link" href="#projects">Cartopath</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <h1 id="hero-title">See how code <span>fits together.</span></h1>
+            <p>Clerestoria builds tools that help developers and AI coding agents understand complex codebases.</p>
+            <a class="button" href="#projects">Explore Cartopath</a>
+          </div>
+
+          <figure class="product-preview">
+            <div class="product-window">
+              <img src="./cartopath-map.png" width="1374" height="1418"
+                alt="Cartopath's code map showing the functions and constants connected to createAnimView.">
+            </div>
+            <figcaption>Dependency map in <code>anim.js</code></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="project-section" id="projects" aria-labelledby="project-title">
+        <div class="container project">
+          <div class="project-intro">
+            <h2 id="project-title">Cartopath</h2>
+            <p>An interactive codebase explorer that maps software architecture and gives AI coding agents structured code context.</p>
+          </div>
+          <dl class="project-features">
+            <div>
+              <dt>Map a codebase</dt>
+              <dd>Zoom from the repository down to individual files, classes, and functions.</dd>
+            </div>
+            <div>
+              <dt>Trace a dependency path</dt>
+              <dd>Follow the connections between parts of the code and see which links are inferred.</dd>
+            </div>
+            <div>
+              <dt>Walk through a function</dt>
+              <dd>Step through control flow alongside the corresponding source code.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>Clerestoria</span>
+        <span>clerestoria.com</span>
+      </div>
+    </footer>
+  </body>
+</html>
