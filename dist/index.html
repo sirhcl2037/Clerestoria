@@ -12,6 +12,7 @@
     <title>Clerestoria · Developer tools</title>
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./cartopath-preview.js" defer></script>
   </head>
   <body id="top">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -39,9 +40,19 @@
           <figure class="product-preview">
             <div class="product-window">
               <img src="./cartopath-map.png" width="1374" height="1418"
-                alt="Cartopath's code map showing the functions and constants connected to createAnimView.">
+                alt="Cartopath's dependency map, with a call path from createAnimView through button to el.">
+              <div class="trace-overlay" aria-hidden="true">
+                <span class="trace-node trace-source"></span>
+                <span class="trace-marker trace-first-call"></span>
+                <span class="trace-node trace-helper"></span>
+                <span class="trace-marker trace-second-call"></span>
+                <span class="trace-node trace-element"></span>
+              </div>
             </div>
-            <figcaption>Dependency map in <code>anim.js</code></figcaption>
+            <figcaption>
+              <span>Dependency map in <code>anim.js</code></span>
+              <button class="preview-replay" type="button" hidden>Replay call path</button>
+            </figcaption>
           </figure>
         </div>
       </section>

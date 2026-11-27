@@ -35,7 +35,8 @@ a {
   color: inherit;
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 4px;
 }
@@ -202,6 +203,7 @@ h1 {
 }
 
 .product-window {
+  position: relative;
   overflow: hidden;
   aspect-ratio: 1374 / 1166;
   border-radius: 0.25rem;
@@ -215,9 +217,117 @@ h1 {
 }
 
 .product-preview figcaption {
-  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+  margin-top: 0.5rem;
   color: var(--muted-on-forest);
   font-size: 0.875rem;
+}
+
+.preview-replay {
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+
+.trace-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* The first call line passes behind the ROW_GAP node in the screenshot. */
+  mask-image: linear-gradient(#000 72.3%, transparent 72.3% 76.5%, #000 76.5%);
+}
+
+.trace-node,
+.trace-marker {
+  position: absolute;
+  opacity: 0;
+}
+
+.trace-node {
+  border: clamp(1px, 0.2vw, 2px) solid #3c6e42;
+  border-radius: 999px;
+  background: rgb(158 206 105 / 15%);
+}
+
+/* Locations are relative to the visible crop of cartopath-map.png. */
+.trace-source {
+  inset: 38.9% 32.9% 45.3% 43.9%;
+}
+
+.trace-helper {
+  inset: 78.5% 38.0% 17.1% 49.1%;
+  --trace-delay: 550ms;
+}
+
+.trace-element {
+  inset: 88.0% 38.0% 7.7% 49.1%;
+  --trace-delay: 980ms;
+}
+
+.is-tracing .trace-node {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preview-replay {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .is-tracing .trace-node {
+    animation: trace-highlight 180ms ease-out var(--trace-delay, 0ms) both;
+  }
+
+  @keyframes trace-highlight {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @supports (offset-path: shape(from 0 0, line to 100% 100%)) {
+    .trace-marker {
+      top: 0;
+      left: 0;
+      width: clamp(4px, 0.6vw, 8px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #3c6e42;
+      box-shadow: 0 0 0 2px #e8f5ce;
+    }
+
+    .trace-first-call {
+      offset-path: shape(from 56.7% 54.7%, curve to 55.55% 78.5% with 56.7% 66% / 55.55% 72.8%);
+      --trace-delay: 140ms;
+      --trace-duration: 440ms;
+    }
+
+    .trace-second-call {
+      offset-path: shape(from 55.55% 82.8%, curve to 59.35% 88% with 55.55% 84.9% / 59.35% 85.9%);
+      --trace-delay: 690ms;
+      --trace-duration: 310ms;
+    }
+
+    .is-tracing .trace-marker {
+      animation: trace-travel var(--trace-duration) ease-out var(--trace-delay) both;
+    }
+
+    @keyframes trace-travel {
+      0% { offset-distance: 0%; opacity: 0; }
+      12%, 85% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+  }
 }
 
 .project-section {
